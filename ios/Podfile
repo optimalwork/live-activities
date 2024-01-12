@@ -14,3 +14,7 @@ end
 target 'PluginTests' do
   capacitor_pods
 end
+
+target 'Timer' do
+  capacitor_pods
+end
