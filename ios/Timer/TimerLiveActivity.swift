@@ -30,7 +30,7 @@ struct TimerLiveActivity: Widget {
             HStack(alignment: .bottom) {
                 Spacer()
                 Text(context.attributes.name).font(.title3)
-                Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true).frame(width: 80)
+                Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true).frame(width: 96)
                     .monospacedDigit()
                     .font(.largeTitle)
             }
@@ -44,7 +44,7 @@ struct TimerLiveActivity: Widget {
                         HStack(alignment: .bottom) {
                             Spacer() // Add Spacer to push views to the end
                             Text(context.attributes.name).font(.title3)
-                            Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true).frame(width: 80)
+                            Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true).frame(width: 96)
                                 .monospacedDigit()
                                 .font(.largeTitle)
                         }
@@ -53,7 +53,7 @@ struct TimerLiveActivity: Widget {
                 Image(systemName: "timer")
             } compactTrailing: {
                 Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)
-                    .frame(width: 36)
+                    .frame(width: 48)
                     .monospacedDigit()
                 
             } minimal: {
