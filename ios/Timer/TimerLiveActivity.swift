@@ -27,7 +27,8 @@ struct TimerLiveActivity: Widget {
     var body: some WidgetConfiguration {
 //      Lock Screen
         ActivityConfiguration(for: TimerAttributes.self) { context in
-            HStack(alignment: .bottom) {
+            HStack(alignment: .lastTextBaseline) {
+                Image("icon-small").resizable().cornerRadius(8.0).frame(width: 64, height: 64, alignment: Alignment.center)
                 Spacer()
                 Text(context.attributes.name).font(.title3)
                 Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true).frame(width: 96)
@@ -41,7 +42,8 @@ struct TimerLiveActivity: Widget {
     dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.center) {
-                        HStack(alignment: .bottom) {
+                    HStack(alignment: .lastTextBaseline) {
+                        Image("icon-small").resizable().cornerRadius(8.0).frame(width: 64, height: 64, alignment: Alignment.center)
                             Spacer() // Add Spacer to push views to the end
                             Text(context.attributes.name).font(.title3)
                             Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true).frame(width: 96)
