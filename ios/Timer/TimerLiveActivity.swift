@@ -36,8 +36,8 @@ struct TimerLiveActivity: Widget {
                     .font(.largeTitle)
             }
             .padding()
-            .activityBackgroundTint(Color.gray)
-            .activitySystemActionForegroundColor(Color.white)
+            .activityBackgroundTint(Color(red: 0.949, green: 0.949, blue: 0.949)) // light gray
+            .activitySystemActionForegroundColor(Color(red: 0.2745, green: 0.2863, blue: 0.298)) // dark gray
         }
     dynamicIsland: { context in
             DynamicIsland {
