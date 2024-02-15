@@ -10,7 +10,7 @@ import WidgetKit
 import SwiftUI
 
 @available(iOS 17.1, *)
-//@main
+@main
 struct TimerBundle: WidgetBundle {
     var body: some Widget {
         Timer()
