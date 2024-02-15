@@ -17,10 +17,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Germinate-LLC/live-activities.git.git"
+    "url": "git+https://github.com/optimalwork/live-activities.git"
   },
   "bugs": {
-    "url": "https://github.com/Germinate-LLC/live-activities.git/issues"
+    "url": "https://github.com/optimalwork/live-activities/issues"
   },
   "keywords": [
     "capacitor",
