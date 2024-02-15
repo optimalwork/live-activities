@@ -23,6 +23,8 @@ struct TimerAttributes: ActivityAttributes {
 
 @available(iOS 16.2, *)
 struct TimerLiveActivity: Widget {
+    
+    let darkGray = Color(red: 0.2745, green: 0.2863, blue: 0.298)
 
     var body: some WidgetConfiguration {
 //      Lock Screen
@@ -30,14 +32,14 @@ struct TimerLiveActivity: Widget {
             HStack(alignment: .lastTextBaseline) {
                 Image("icon-small").resizable().cornerRadius(8.0).frame(width: 64, height: 64, alignment: Alignment.center)
                 Spacer()
-                Text(context.attributes.name).font(.title3)
+                Text(context.attributes.name).font(.title3).foregroundStyle(darkGray)
                 Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true).frame(width: 96)
                     .monospacedDigit()
                     .font(.largeTitle)
+                    .foregroundStyle(darkGray)
             }
             .padding()
-            .activityBackgroundTint(Color.gray)
-            .activitySystemActionForegroundColor(Color.white)
+            .activityBackgroundTint(Color(red: 0.949, green: 0.949, blue: 0.949)) // light gray
         }
     dynamicIsland: { context in
             DynamicIsland {
