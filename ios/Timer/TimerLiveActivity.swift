@@ -25,6 +25,8 @@ struct TimerAttributes: ActivityAttributes {
 struct TimerLiveActivity: Widget {
     
     let darkGray = Color(red: 0.2745, green: 0.2863, blue: 0.298)
+    let lightGold = Color(red: 0.8980, green: 0.702, blue: 0.3137)
+    let lightGray = Color(red: 0.949, green: 0.949, blue: 0.949)
 
     var body: some WidgetConfiguration {
 //      Lock Screen
@@ -39,7 +41,7 @@ struct TimerLiveActivity: Widget {
                     .foregroundStyle(darkGray)
             }
             .padding()
-            .activityBackgroundTint(Color(red: 0.949, green: 0.949, blue: 0.949)) // light gray
+            .activityBackgroundTint(lightGray)
         }
     dynamicIsland: { context in
             DynamicIsland {
@@ -54,16 +56,19 @@ struct TimerLiveActivity: Widget {
                         }
                 }
             } compactLeading: {
-                Image(systemName: "timer")
+                Image(systemName: "timer").foregroundColor(lightGold)
             } compactTrailing: {
                 Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)
                     .frame(width: 48)
                     .monospacedDigit()
-                
+                    .foregroundColor(lightGold)
+
             } minimal: {
                 Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)
                     .monospacedDigit()
                     .font(.caption2)
+                    .foregroundColor(lightGold)
+
             }
         }
     }
@@ -74,20 +79,3 @@ extension TimerAttributes {
         TimerAttributes(name: "World")
     }
 }
-
-//extension TimerAttributes.ContentState {
-//    fileprivate static var smiley: TimerAttributes.ContentState {
-//        TimerAttributes.ContentState(emoji: "😀", expectedArrivalSeconds: <#ClosedRange<Date>#>)
-//     }
-//
-//     fileprivate static var starEyes: TimerAttributes.ContentState {
-//         TimerAttributes.ContentState(emoji: "🤩")
-//     }
-//}
-
-//#Preview("Notification", as: .content, using: TimerAttributes.preview) {
-//   TimerLiveActivity()
-//} contentStates: {
-//    TimerAttributes.ContentState.smiley
-//    TimerAttributes.ContentState.starEyes
-//}
