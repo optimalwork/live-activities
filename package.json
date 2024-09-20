@@ -10,8 +10,8 @@
     "android/src/main/",
     "android/build.gradle",
     "dist/",
-    "ios/Plugin/",
-    "LiveActivity.podspec"
+    "ios/",
+    "LiveActivities.podspec"
   ],
   "author": "",
   "license": "MIT",
