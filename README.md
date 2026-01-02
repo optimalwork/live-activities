@@ -26,14 +26,14 @@ npx cap sync
 ### echo(...)
 
 ```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
+echo(options: { value: string; }) => any
 ```
 
 | Param         | Type                            |
 | ------------- | ------------------------------- |
 | **`options`** | <code>{ value: string; }</code> |
 
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+**Returns:** <code>any</code>
 
 --------------------
 
@@ -41,14 +41,14 @@ echo(options: { value: string; }) => Promise<{ value: string; }>
 ### start(...)
 
 ```typescript
-start(options: { name: string; emoji: string; expectedTimeInSeconds: number; }) => Promise<{ activityId: string; }>
+start(options: { name: string; emoji: string; expectedTimeInSeconds: number; }) => any
 ```
 
 | Param         | Type                                                                         |
 | ------------- | ---------------------------------------------------------------------------- |
 | **`options`** | <code>{ name: string; emoji: string; expectedTimeInSeconds: number; }</code> |
 
-**Returns:** <code>Promise&lt;{ activityId: string; }&gt;</code>
+**Returns:** <code>any</code>
 
 --------------------
 
@@ -56,12 +56,14 @@ start(options: { name: string; emoji: string; expectedTimeInSeconds: number; }) 
 ### update(...)
 
 ```typescript
-update(options: { activityId: string; emoji: string; expectedTimeInSeconds: number; }) => Promise<void>
+update(options: { activityId: string; emoji: string; expectedTimeInSeconds: number; }) => any
 ```
 
 | Param         | Type                                                                               |
 | ------------- | ---------------------------------------------------------------------------------- |
 | **`options`** | <code>{ activityId: string; emoji: string; expectedTimeInSeconds: number; }</code> |
+
+**Returns:** <code>any</code>
 
 --------------------
 
@@ -69,12 +71,14 @@ update(options: { activityId: string; emoji: string; expectedTimeInSeconds: numb
 ### stop(...)
 
 ```typescript
-stop(options: { activityId: string; }) => Promise<void>
+stop(options: { activityId: string; }) => any
 ```
 
 | Param         | Type                                 |
 | ------------- | ------------------------------------ |
 | **`options`** | <code>{ activityId: string; }</code> |
+
+**Returns:** <code>any</code>
 
 --------------------
 
