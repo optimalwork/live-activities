@@ -31,8 +31,6 @@ var capacitorLiveActivity = (function (exports, core) {
 
     exports.LiveActivity = LiveActivity;
 
-    Object.defineProperty(exports, '__esModule', { value: true });
-
     return exports;
 
 })({}, capacitorExports);

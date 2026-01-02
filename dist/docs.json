@@ -7,7 +7,7 @@
     "methods": [
       {
         "name": "echo",
-        "signature": "(options: { value: string; }) => Promise<{ value: string; }>",
+        "signature": "(options: { value: string; }) => any",
         "parameters": [
           {
             "name": "options",
@@ -15,7 +15,7 @@
             "type": "{ value: string; }"
           }
         ],
-        "returns": "Promise<{ value: string; }>",
+        "returns": "any",
         "tags": [],
         "docs": "",
         "complexTypes": [],
@@ -23,7 +23,7 @@
       },
       {
         "name": "start",
-        "signature": "(options: { name: string; emoji: string; expectedTimeInSeconds: number; }) => Promise<{ activityId: string; }>",
+        "signature": "(options: { name: string; emoji: string; expectedTimeInSeconds: number; }) => any",
         "parameters": [
           {
             "name": "options",
@@ -31,7 +31,7 @@
             "type": "{ name: string; emoji: string; expectedTimeInSeconds: number; }"
           }
         ],
-        "returns": "Promise<{ activityId: string; }>",
+        "returns": "any",
         "tags": [],
         "docs": "",
         "complexTypes": [],
@@ -39,7 +39,7 @@
       },
       {
         "name": "update",
-        "signature": "(options: { activityId: string; emoji: string; expectedTimeInSeconds: number; }) => Promise<void>",
+        "signature": "(options: { activityId: string; emoji: string; expectedTimeInSeconds: number; }) => any",
         "parameters": [
           {
             "name": "options",
@@ -47,7 +47,7 @@
             "type": "{ activityId: string; emoji: string; expectedTimeInSeconds: number; }"
           }
         ],
-        "returns": "Promise<void>",
+        "returns": "any",
         "tags": [],
         "docs": "",
         "complexTypes": [],
@@ -55,7 +55,7 @@
       },
       {
         "name": "stop",
-        "signature": "(options: { activityId: string; }) => Promise<void>",
+        "signature": "(options: { activityId: string; }) => any",
         "parameters": [
           {
             "name": "options",
@@ -63,7 +63,7 @@
             "type": "{ activityId: string; }"
           }
         ],
-        "returns": "Promise<void>",
+        "returns": "any",
         "tags": [],
         "docs": "",
         "complexTypes": [],
