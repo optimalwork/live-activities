@@ -8,13 +8,13 @@ import ActivityKit
         return value
     }
     
-    @objc func start(_ emoji: String, _ name: String, _ expectedTimeInSeconds: Int) -> String {
+    @objc func start(_ emoji: String, _ name: String, _ timerType: String, _ expectedTimeInSeconds: Int) -> String {
         if ActivityAuthorizationInfo().areActivitiesEnabled {
             var future = Calendar.current.date(byAdding: .minute, value: (0), to: Date())!
             future = Calendar.current.date(byAdding: .second, value: (expectedTimeInSeconds), to: future)!
             let date = Date.now...future
             let initialContentState = TimerAttributes.ContentState(emoji: emoji, expectedArrivalSeconds: date)
-            let activityAttributes = TimerAttributes(name: name)
+            let activityAttributes = TimerAttributes(name: name, timerType: timerType)
             let activityContent = ActivityContent(state: initialContentState, staleDate: Calendar.current.date(byAdding: .minute, value: 30, to: Date())!, relevanceScore: 100)
             
             do {

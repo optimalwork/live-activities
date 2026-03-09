@@ -6,6 +6,7 @@ export interface LiveActivityPlugin {
     }>;
     start(options: {
         name: string;
+        timerType?: string;
         emoji: string;
         expectedTimeInSeconds: number;
     }): Promise<{

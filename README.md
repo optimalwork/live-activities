@@ -44,14 +44,14 @@ If no `live-activity-icon` image is found, a system `timer` icon is shown as a f
 ### echo(...)
 
 ```typescript
-echo(options: { value: string; }) => any
+echo(options: { value: string; }) => Promise<{ value: string; }>
 ```
 
 | Param         | Type                            |
 | ------------- | ------------------------------- |
 | **`options`** | <code>{ value: string; }</code> |
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
 --------------------
 
@@ -59,14 +59,14 @@ echo(options: { value: string; }) => any
 ### start(...)
 
 ```typescript
-start(options: { name: string; emoji: string; expectedTimeInSeconds: number; }) => any
+start(options: { name: string; timerType?: string; emoji: string; expectedTimeInSeconds: number; }) => Promise<{ activityId: string; }>
 ```
 
-| Param         | Type                                                                         |
-| ------------- | ---------------------------------------------------------------------------- |
-| **`options`** | <code>{ name: string; emoji: string; expectedTimeInSeconds: number; }</code> |
+| Param         | Type                                                                                             |
+| ------------- | ------------------------------------------------------------------------------------------------ |
+| **`options`** | <code>{ name: string; timerType?: string; emoji: string; expectedTimeInSeconds: number; }</code> |
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;{ activityId: string; }&gt;</code>
 
 --------------------
 
@@ -74,14 +74,12 @@ start(options: { name: string; emoji: string; expectedTimeInSeconds: number; }) 
 ### update(...)
 
 ```typescript
-update(options: { activityId: string; emoji: string; expectedTimeInSeconds: number; }) => any
+update(options: { activityId: string; emoji: string; expectedTimeInSeconds: number; }) => Promise<void>
 ```
 
 | Param         | Type                                                                               |
 | ------------- | ---------------------------------------------------------------------------------- |
 | **`options`** | <code>{ activityId: string; emoji: string; expectedTimeInSeconds: number; }</code> |
-
-**Returns:** <code>any</code>
 
 --------------------
 
@@ -89,14 +87,12 @@ update(options: { activityId: string; emoji: string; expectedTimeInSeconds: numb
 ### stop(...)
 
 ```typescript
-stop(options: { activityId: string; }) => any
+stop(options: { activityId: string; }) => Promise<void>
 ```
 
 | Param         | Type                                 |
 | ------------- | ------------------------------------ |
 | **`options`** | <code>{ activityId: string; }</code> |
-
-**Returns:** <code>any</code>
 
 --------------------
 

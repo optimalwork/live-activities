@@ -10,6 +10,7 @@ export class LiveActivityWeb extends WebPlugin implements LiveActivityPlugin {
 
   async start(options: {
     name: string;
+    timerType?: string;
     emoji: string;
     expectedTimeInSeconds: number;
   }): Promise<{ activityId: string }> {

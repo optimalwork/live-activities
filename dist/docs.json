@@ -7,7 +7,7 @@
     "methods": [
       {
         "name": "echo",
-        "signature": "(options: { value: string; }) => any",
+        "signature": "(options: { value: string; }) => Promise<{ value: string; }>",
         "parameters": [
           {
             "name": "options",
@@ -15,7 +15,7 @@
             "type": "{ value: string; }"
           }
         ],
-        "returns": "any",
+        "returns": "Promise<{ value: string; }>",
         "tags": [],
         "docs": "",
         "complexTypes": [],
@@ -23,15 +23,15 @@
       },
       {
         "name": "start",
-        "signature": "(options: { name: string; emoji: string; expectedTimeInSeconds: number; }) => any",
+        "signature": "(options: { name: string; timerType?: string; emoji: string; expectedTimeInSeconds: number; }) => Promise<{ activityId: string; }>",
         "parameters": [
           {
             "name": "options",
             "docs": "",
-            "type": "{ name: string; emoji: string; expectedTimeInSeconds: number; }"
+            "type": "{ name: string; timerType?: string | undefined; emoji: string; expectedTimeInSeconds: number; }"
           }
         ],
-        "returns": "any",
+        "returns": "Promise<{ activityId: string; }>",
         "tags": [],
         "docs": "",
         "complexTypes": [],
@@ -39,7 +39,7 @@
       },
       {
         "name": "update",
-        "signature": "(options: { activityId: string; emoji: string; expectedTimeInSeconds: number; }) => any",
+        "signature": "(options: { activityId: string; emoji: string; expectedTimeInSeconds: number; }) => Promise<void>",
         "parameters": [
           {
             "name": "options",
@@ -47,7 +47,7 @@
             "type": "{ activityId: string; emoji: string; expectedTimeInSeconds: number; }"
           }
         ],
-        "returns": "any",
+        "returns": "Promise<void>",
         "tags": [],
         "docs": "",
         "complexTypes": [],
@@ -55,7 +55,7 @@
       },
       {
         "name": "stop",
-        "signature": "(options: { activityId: string; }) => any",
+        "signature": "(options: { activityId: string; }) => Promise<void>",
         "parameters": [
           {
             "name": "options",
@@ -63,7 +63,7 @@
             "type": "{ activityId: string; }"
           }
         ],
-        "returns": "any",
+        "returns": "Promise<void>",
         "tags": [],
         "docs": "",
         "complexTypes": [],

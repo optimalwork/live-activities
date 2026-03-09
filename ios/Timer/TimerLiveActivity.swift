@@ -19,6 +19,7 @@ struct TimerAttributes: ActivityAttributes {
 
     // Fixed non-changing properties about your activity go here!
     var name: String
+    var timerType: String
 }
 
 @available(iOS 16.2, *)
@@ -48,13 +49,23 @@ struct TimerLiveActivity: Widget {
         ActivityConfiguration(for: TimerAttributes.self) { context in
             HStack(spacing: 12) {
                 iconView
-                Text(context.attributes.name).font(.title3).foregroundStyle(darkGray)
+                VStack(alignment: .leading, spacing: 2) {
+                    if !context.attributes.timerType.isEmpty {
+                        Text(context.attributes.timerType)
+                            .font(.caption)
+                            .foregroundStyle(darkGray.opacity(0.6))
+                    }
+                    Text(context.attributes.name)
+                        .font(.headline)
+                        .foregroundStyle(darkGray)
+                        .lineLimit(1)
+                }
                 Spacer()
                 Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)
-                    .frame(width: 96)
                     .monospacedDigit()
-                    .font(.largeTitle)
+                    .font(.title2)
                     .foregroundStyle(darkGray)
+                    .fixedSize()
             }
             .padding()
             .activityBackgroundTint(lightGray)
@@ -64,12 +75,21 @@ struct TimerLiveActivity: Widget {
                 DynamicIslandExpandedRegion(.center) {
                     HStack(spacing: 12) {
                         iconView
-                        Text(context.attributes.name).font(.title3)
+                        VStack(alignment: .leading, spacing: 2) {
+                            if !context.attributes.timerType.isEmpty {
+                                Text(context.attributes.timerType)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Text(context.attributes.name)
+                                .font(.headline)
+                                .lineLimit(1)
+                        }
                         Spacer()
                         Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)
-                            .frame(width: 96)
                             .monospacedDigit()
-                            .font(.largeTitle)
+                            .font(.title2)
+                            .fixedSize()
                     }
                 }
             } compactLeading: {
@@ -93,6 +113,6 @@ struct TimerLiveActivity: Widget {
 
 extension TimerAttributes {
     fileprivate static var preview: TimerAttributes {
-        TimerAttributes(name: "World")
+        TimerAttributes(name: "World", timerType: "Preview")
     }
 }

@@ -21,9 +21,10 @@ public class LiveActivityPlugin: CAPPlugin {
     @objc func start(_ call: CAPPluginCall) {
        let emoji = call.getString("emoji")!
        let name = call.getString("name")!
+       let timerType = call.getString("timerType") ?? ""
         let expectedTimeInSeconds = call.getInt("expectedTimeInSeconds") ?? 0
         call.resolve([
-            "activityId": implementation.start(emoji, name, expectedTimeInSeconds)
+            "activityId": implementation.start(emoji, name, timerType, expectedTimeInSeconds)
         ])
    }
 

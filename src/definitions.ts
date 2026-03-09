@@ -2,6 +2,7 @@ export interface LiveActivityPlugin {
   echo(options: { value: string }): Promise<{ value: string }>;
   start(options: {
     name: string;
+    timerType?: string;
     emoji: string;
     expectedTimeInSeconds: number;
   }): Promise<{ activityId: string }>;

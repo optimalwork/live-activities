@@ -8,6 +8,7 @@ export declare class LiveActivityWeb extends WebPlugin implements LiveActivityPl
     }>;
     start(options: {
         name: string;
+        timerType?: string;
         emoji: string;
         expectedTimeInSeconds: number;
     }): Promise<{
