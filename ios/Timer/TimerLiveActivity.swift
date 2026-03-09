@@ -65,9 +65,10 @@ struct TimerLiveActivity: Widget {
                     .monospacedDigit()
                     .font(.title2)
                     .foregroundStyle(darkGray)
-                    .fixedSize()
+                    .frame(minWidth: 70)
             }
-            .padding()
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
             .activityBackgroundTint(lightGray)
         }
     dynamicIsland: { context in
@@ -89,7 +90,7 @@ struct TimerLiveActivity: Widget {
                         Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)
                             .monospacedDigit()
                             .font(.title2)
-                            .fixedSize()
+                            .frame(minWidth: 70)
                     }
                 }
             } compactLeading: {
