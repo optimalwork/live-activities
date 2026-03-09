@@ -9,6 +9,24 @@ npm install live-activities
 npx cap sync
 ```
 
+## Custom Icon
+
+The Live Activity and Dynamic Island views display an app icon. You must provide your own image named `live-activity-icon` in your widget extension's asset catalog.
+
+### Setup
+
+1. In Xcode, open your widget extension's asset catalog at `ios/App/Timer/Assets.xcassets/`.
+2. Create a new Image Set named **`live-activity-icon`**.
+3. Add your icon at the following sizes (for a 48pt frame):
+
+| Scale | Pixels    |
+|-------|-----------|
+| 1x    | 48 x 48   |
+| 2x    | 96 x 96   |
+| 3x    | 144 x 144  |
+
+If no `live-activity-icon` image is found, a system `timer` icon is shown as a fallback.
+
 ## API
 
 <docgen-index>

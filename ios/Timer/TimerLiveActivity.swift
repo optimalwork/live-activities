@@ -23,19 +23,35 @@ struct TimerAttributes: ActivityAttributes {
 
 @available(iOS 16.2, *)
 struct TimerLiveActivity: Widget {
-    
+
     let darkGray = Color(red: 0.2745, green: 0.2863, blue: 0.298)
     let lightGold = Color(red: 0.8980, green: 0.702, blue: 0.3137)
     let lightGray = Color(red: 0.949, green: 0.949, blue: 0.949)
 
+    @ViewBuilder
+    private var iconView: some View {
+        if let uiImage = UIImage(named: "live-activity-icon") {
+            Image(uiImage: uiImage)
+                .resizable()
+                .cornerRadius(8.0)
+                .frame(width: 48, height: 48)
+        } else {
+            Image(systemName: "timer")
+                .resizable()
+                .frame(width: 32, height: 32)
+                .foregroundStyle(darkGray)
+        }
+    }
+
     var body: some WidgetConfiguration {
 //      Lock Screen
         ActivityConfiguration(for: TimerAttributes.self) { context in
-            HStack(alignment: .lastTextBaseline) {
-                Image("icon-small").resizable().cornerRadius(8.0).frame(width: 64, height: 64, alignment: Alignment.center)
-                Spacer()
+            HStack(spacing: 12) {
+                iconView
                 Text(context.attributes.name).font(.title3).foregroundStyle(darkGray)
-                Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true).frame(width: 96)
+                Spacer()
+                Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)
+                    .frame(width: 96)
                     .monospacedDigit()
                     .font(.largeTitle)
                     .foregroundStyle(darkGray)
@@ -46,14 +62,15 @@ struct TimerLiveActivity: Widget {
     dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.center) {
-                    HStack(alignment: .lastTextBaseline) {
-                        Image("icon-small").resizable().cornerRadius(8.0).frame(width: 64, height: 64, alignment: Alignment.center)
-                            Spacer() // Add Spacer to push views to the end
-                            Text(context.attributes.name).font(.title3)
-                            Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true).frame(width: 96)
-                                .monospacedDigit()
-                                .font(.largeTitle)
-                        }
+                    HStack(spacing: 12) {
+                        iconView
+                        Text(context.attributes.name).font(.title3)
+                        Spacer()
+                        Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)
+                            .frame(width: 96)
+                            .monospacedDigit()
+                            .font(.largeTitle)
+                    }
                 }
             } compactLeading: {
                 Image(systemName: "timer").foregroundColor(lightGold)
