@@ -65,7 +65,8 @@ struct TimerLiveActivity: Widget {
                     .monospacedDigit()
                     .font(.title2)
                     .foregroundStyle(darkGray)
-                    .frame(minWidth: 70)
+                    .frame(minWidth: 70, alignment: .trailing)
+                    .multilineTextAlignment(.trailing)
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
@@ -90,7 +91,8 @@ struct TimerLiveActivity: Widget {
                         Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)
                             .monospacedDigit()
                             .font(.title2)
-                            .frame(minWidth: 70)
+                            .frame(minWidth: 70, alignment: .trailing)
+                            .multilineTextAlignment(.trailing)
                     }
                 }
             } compactLeading: {
