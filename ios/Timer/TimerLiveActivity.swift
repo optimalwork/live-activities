@@ -88,6 +88,8 @@ struct TimerLiveActivity: Widget {
                         Text("Paused")
                             .font(.caption)
                             .foregroundStyle(darkGray.opacity(0.6))
+                            .frame(minWidth: 70, alignment: .trailing)
+                            .multilineTextAlignment(.trailing)
                     }
                     timerText(state: context.state)
                         .monospacedDigit()
@@ -122,6 +124,8 @@ struct TimerLiveActivity: Widget {
                                 Text("Paused")
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
+                                    .frame(minWidth: 70, alignment: .trailing)
+                                    .multilineTextAlignment(.trailing)
                             }
                             timerText(state: context.state)
                                 .monospacedDigit()
