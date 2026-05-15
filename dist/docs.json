@@ -39,12 +39,12 @@
       },
       {
         "name": "update",
-        "signature": "(options: { activityId: string; emoji: string; expectedTimeInSeconds: number; }) => Promise<void>",
+        "signature": "(options: { activityId: string; emoji: string; expectedTimeInSeconds: number; isPaused?: boolean; secondsRemainingAtPause?: number; notify?: boolean; }) => Promise<void>",
         "parameters": [
           {
             "name": "options",
             "docs": "",
-            "type": "{ activityId: string; emoji: string; expectedTimeInSeconds: number; }"
+            "type": "{ activityId: string; emoji: string; expectedTimeInSeconds: number; isPaused?: boolean | undefined; secondsRemainingAtPause?: number | undefined; notify?: boolean | undefined; }"
           }
         ],
         "returns": "Promise<void>",

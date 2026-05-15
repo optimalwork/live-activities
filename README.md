@@ -74,12 +74,12 @@ start(options: { name: string; timerType?: string; emoji: string; expectedTimeIn
 ### update(...)
 
 ```typescript
-update(options: { activityId: string; emoji: string; expectedTimeInSeconds: number; }) => Promise<void>
+update(options: { activityId: string; emoji: string; expectedTimeInSeconds: number; isPaused?: boolean; secondsRemainingAtPause?: number; notify?: boolean; }) => Promise<void>
 ```
 
-| Param         | Type                                                                               |
-| ------------- | ---------------------------------------------------------------------------------- |
-| **`options`** | <code>{ activityId: string; emoji: string; expectedTimeInSeconds: number; }</code> |
+| Param         | Type                                                                                                                                                       |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`options`** | <code>{ activityId: string; emoji: string; expectedTimeInSeconds: number; isPaused?: boolean; secondsRemainingAtPause?: number; notify?: boolean; }</code> |
 
 --------------------
 

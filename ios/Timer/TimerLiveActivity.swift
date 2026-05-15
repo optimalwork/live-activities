@@ -15,6 +15,9 @@ struct TimerAttributes: ActivityAttributes {
         // Dynamic stateful properties about your activity go here!
         var emoji: String
         var expectedArrivalSeconds: ClosedRange<Date>
+        // Optional so older activities (started before pause-support) still decode.
+        var isPaused: Bool?
+        var secondsRemainingAtPause: Int?
     }
 
     // Fixed non-changing properties about your activity go here!
@@ -44,6 +47,25 @@ struct TimerLiveActivity: Widget {
         }
     }
 
+    private func formatTime(_ seconds: Int) -> String {
+        let clamped = max(0, seconds)
+        let h = clamped / 3600
+        let m = (clamped % 3600) / 60
+        let s = clamped % 60
+        return h > 0
+            ? String(format: "%d:%02d:%02d", h, m, s)
+            : String(format: "%d:%02d", m, s)
+    }
+
+    @ViewBuilder
+    private func timerText(state: TimerAttributes.ContentState) -> some View {
+        if state.isPaused == true {
+            Text(formatTime(state.secondsRemainingAtPause ?? 0))
+        } else {
+            Text(timerInterval: state.expectedArrivalSeconds, countsDown: true)
+        }
+    }
+
     var body: some WidgetConfiguration {
 //      Lock Screen
         ActivityConfiguration(for: TimerAttributes.self) { context in
@@ -59,9 +81,14 @@ struct TimerLiveActivity: Widget {
                         .font(.headline)
                         .foregroundStyle(darkGray)
                         .lineLimit(1)
+                    if context.state.isPaused == true {
+                        Text("Paused")
+                            .font(.caption)
+                            .foregroundStyle(darkGray.opacity(0.6))
+                    }
                 }
                 Spacer()
-                Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)
+                timerText(state: context.state)
                     .monospacedDigit()
                     .font(.title2)
                     .foregroundStyle(darkGray)
@@ -86,9 +113,14 @@ struct TimerLiveActivity: Widget {
                             Text(context.attributes.name)
                                 .font(.headline)
                                 .lineLimit(1)
+                            if context.state.isPaused == true {
+                                Text("Paused")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                         Spacer()
-                        Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)
+                        timerText(state: context.state)
                             .monospacedDigit()
                             .font(.title2)
                             .frame(minWidth: 70, alignment: .trailing)
@@ -96,19 +128,24 @@ struct TimerLiveActivity: Widget {
                     }
                 }
             } compactLeading: {
-                Image(systemName: "timer").foregroundColor(lightGold)
+                Image(systemName: context.state.isPaused == true ? "pause.fill" : "timer")
+                    .foregroundColor(lightGold)
             } compactTrailing: {
-                Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)
+                timerText(state: context.state)
                     .frame(width: 48)
                     .monospacedDigit()
                     .foregroundColor(lightGold)
 
             } minimal: {
-                Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)
-                    .monospacedDigit()
-                    .font(.caption2)
-                    .foregroundColor(lightGold)
-
+                if context.state.isPaused == true {
+                    Image(systemName: "pause.fill")
+                        .foregroundColor(lightGold)
+                } else {
+                    Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)
+                        .monospacedDigit()
+                        .font(.caption2)
+                        .foregroundColor(lightGold)
+                }
             }
         }
     }

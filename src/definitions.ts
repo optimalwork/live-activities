@@ -10,6 +10,12 @@ export interface LiveActivityPlugin {
     activityId: string;
     emoji: string;
     expectedTimeInSeconds: number;
+    /** When true, the widget renders a static "Paused" state instead of a counting-down timer. */
+    isPaused?: boolean;
+    /** Frozen remaining seconds to display when `isPaused` is true. */
+    secondsRemainingAtPause?: number;
+    /** Whether to fire a system alert (banner/sound) on this update. Defaults to false. */
+    notify?: boolean;
   }): Promise<void>;
   stop(options: { activityId: string }): Promise<void>;
 }

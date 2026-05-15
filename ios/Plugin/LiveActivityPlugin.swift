@@ -31,23 +31,35 @@ public class LiveActivityPlugin: CAPPlugin {
    @objc func update(_ call: CAPPluginCall){
        let emoji = call.getString("emoji")!
        let activityId = call.getString("activityId")!
-       let expectedTimeInSeconds = call.getInt("expectedTimeInSeconds")
+       let expectedTimeInSeconds = call.getInt("expectedTimeInSeconds") ?? 0
+       let isPaused = call.getBool("isPaused") ?? false
+       let secondsRemainingAtPause = call.getInt("secondsRemainingAtPause") ?? 0
+       let notify = call.getBool("notify") ?? false
        let activity = Activity<TimerAttributes>.activities.first { $0.id == activityId}
-       
+
        if activity != nil {
-           var future = Calendar.current.date(byAdding: .minute, value: (expectedTimeInSeconds ?? 0), to: Date())!
-           future = Calendar.current.date(byAdding: .second, value: (expectedTimeInSeconds ?? 0), to: future)!
+           let future = Calendar.current.date(byAdding: .second, value: expectedTimeInSeconds, to: Date())!
            let date = Date.now...future
-           let updateState = TimerAttributes.ContentState(emoji: emoji, expectedArrivalSeconds: date)
-           let alertConfiguration = AlertConfiguration(title: "Live update", body: "Getting the things done!", sound: .default)
+           let updateState = TimerAttributes.ContentState(
+               emoji: emoji,
+               expectedArrivalSeconds: date,
+               isPaused: isPaused,
+               secondsRemainingAtPause: secondsRemainingAtPause
+           )
            let updatedContent = ActivityContent(state: updateState, staleDate: nil)
-           
+
            Task {
-               await activity?.update(updatedContent, alertConfiguration: alertConfiguration)
+               if notify {
+                   let alertConfiguration = AlertConfiguration(title: "Live update", body: "Getting the things done!", sound: .default)
+                   await activity?.update(updatedContent, alertConfiguration: alertConfiguration)
+               } else {
+                   await activity?.update(updatedContent)
+               }
            }
        }
+       call.resolve()
    }
-   
+
    @objc func stop(_ call: CAPPluginCall) {
        let activityId = call.getString("activityId")
        let activity = Activity<TimerAttributes>.activities.first { $0.id == activityId}
@@ -56,5 +68,6 @@ public class LiveActivityPlugin: CAPPlugin {
                await activity?.end(dismissalPolicy: .immediate)
            }
        }
+       call.resolve()
    }
 }
