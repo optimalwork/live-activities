@@ -81,19 +81,21 @@ struct TimerLiveActivity: Widget {
                         .font(.headline)
                         .foregroundStyle(darkGray)
                         .lineLimit(1)
+                }
+                Spacer()
+                VStack(alignment: .trailing, spacing: 2) {
                     if context.state.isPaused == true {
                         Text("Paused")
                             .font(.caption)
                             .foregroundStyle(darkGray.opacity(0.6))
                     }
+                    timerText(state: context.state)
+                        .monospacedDigit()
+                        .font(.title2)
+                        .foregroundStyle(darkGray)
+                        .frame(minWidth: 70, alignment: .trailing)
+                        .multilineTextAlignment(.trailing)
                 }
-                Spacer()
-                timerText(state: context.state)
-                    .monospacedDigit()
-                    .font(.title2)
-                    .foregroundStyle(darkGray)
-                    .frame(minWidth: 70, alignment: .trailing)
-                    .multilineTextAlignment(.trailing)
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
@@ -113,18 +115,20 @@ struct TimerLiveActivity: Widget {
                             Text(context.attributes.name)
                                 .font(.headline)
                                 .lineLimit(1)
+                        }
+                        Spacer()
+                        VStack(alignment: .trailing, spacing: 2) {
                             if context.state.isPaused == true {
                                 Text("Paused")
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
+                            timerText(state: context.state)
+                                .monospacedDigit()
+                                .font(.title2)
+                                .frame(minWidth: 70, alignment: .trailing)
+                                .multilineTextAlignment(.trailing)
                         }
-                        Spacer()
-                        timerText(state: context.state)
-                            .monospacedDigit()
-                            .font(.title2)
-                            .frame(minWidth: 70, alignment: .trailing)
-                            .multilineTextAlignment(.trailing)
                     }
                 }
             } compactLeading: {
