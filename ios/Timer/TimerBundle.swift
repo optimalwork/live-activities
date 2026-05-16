@@ -13,7 +13,7 @@ import SwiftUI
 @main
 struct TimerBundle: WidgetBundle {
     var body: some Widget {
-        Timer()
+//        Timer()
         TimerLiveActivity()
     }
 }
