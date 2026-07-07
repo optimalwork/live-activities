@@ -68,6 +68,16 @@
         "docs": "",
         "complexTypes": [],
         "slug": "stop"
+      },
+      {
+        "name": "stopAll",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "End EVERY activity this app owns, immediately. Cold-start orphan\nrecovery: a Live Activity outlives the webview, so a killed/reloaded\nsession can leave one running with no JS owner (and no reachable id) —\ncall this at app boot, when nothing legitimately owns an activity yet.",
+        "complexTypes": [],
+        "slug": "stopall"
       }
     ],
     "properties": []

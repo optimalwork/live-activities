@@ -90,6 +90,16 @@ struct TimerLiveActivity: Widget {
                             .foregroundStyle(darkGray.opacity(0.6))
                             .frame(minWidth: 70, alignment: .trailing)
                             .multilineTextAlignment(.trailing)
+                    } else if context.isStale {
+                        // Stale = the timer's end passed with the app never
+                        // running again to end this activity (staleDate is
+                        // set to the deadline) — say so instead of sitting
+                        // on a live-looking 0:00.
+                        Text("Time's up")
+                            .font(.caption)
+                            .foregroundStyle(darkGray.opacity(0.6))
+                            .frame(minWidth: 70, alignment: .trailing)
+                            .multilineTextAlignment(.trailing)
                     }
                     timerText(state: context.state)
                         .monospacedDigit()
@@ -126,6 +136,12 @@ struct TimerLiveActivity: Widget {
                                     .foregroundStyle(.secondary)
                                     .frame(minWidth: 70, alignment: .trailing)
                                     .multilineTextAlignment(.trailing)
+                            } else if context.isStale {
+                                Text("Time's up")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                                    .frame(minWidth: 70, alignment: .trailing)
+                                    .multilineTextAlignment(.trailing)
                             }
                             timerText(state: context.state)
                                 .monospacedDigit()
@@ -136,8 +152,12 @@ struct TimerLiveActivity: Widget {
                     }
                 }
             } compactLeading: {
-                Image(systemName: context.state.isPaused == true ? "pause.fill" : "timer")
+                Image(systemName: context.state.isPaused == true
+                    ? "pause.fill"
+                    : (context.isStale ? "checkmark" : "play.fill"))
                     .foregroundColor(lightGold)
+                    // Nudge right off the hard left edge of the compact region.
+                    .padding(.leading, 4)
             } compactTrailing: {
                 timerText(state: context.state)
                     .frame(width: 48)
@@ -147,6 +167,9 @@ struct TimerLiveActivity: Widget {
             } minimal: {
                 if context.state.isPaused == true {
                     Image(systemName: "pause.fill")
+                        .foregroundColor(lightGold)
+                } else if context.isStale {
+                    Image(systemName: "checkmark")
                         .foregroundColor(lightGold)
                 } else {
                     Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)

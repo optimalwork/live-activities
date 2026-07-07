@@ -22,6 +22,9 @@ var capacitorLiveActivity = (function (exports, core) {
             console.log('ECHO', options);
             return;
         }
+        async stopAll() {
+            return;
+        }
     }
 
     var web = /*#__PURE__*/Object.freeze({

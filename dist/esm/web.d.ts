@@ -22,4 +22,5 @@ export declare class LiveActivityWeb extends WebPlugin implements LiveActivityPl
     stop(options: {
         activityId: string;
     }): Promise<void>;
+    stopAll(): Promise<void>;
 }

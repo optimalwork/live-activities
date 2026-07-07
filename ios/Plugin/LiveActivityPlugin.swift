@@ -46,7 +46,10 @@ public class LiveActivityPlugin: CAPPlugin {
                isPaused: isPaused,
                secondsRemainingAtPause: secondsRemainingAtPause
            )
-           let updatedContent = ActivityContent(state: updateState, staleDate: nil)
+           // Running: stale exactly at zero (see start()) so the widget can
+           // flip to "Time's up" without the app running. Paused: no stale
+           // marker — a frozen display stays accurate indefinitely.
+           let updatedContent = ActivityContent(state: updateState, staleDate: isPaused ? nil : future)
 
            Task {
                if notify {
@@ -66,6 +69,20 @@ public class LiveActivityPlugin: CAPPlugin {
        if activity != nil {
            Task {
                await activity?.end(dismissalPolicy: .immediate)
+           }
+       }
+       call.resolve()
+   }
+
+   /// End EVERY activity this app owns, immediately. Cold-start orphan
+   /// recovery: a Live Activity outlives the webview, so a killed/reloaded
+   /// session can leave one running with no JS owner (and no reachable id) —
+   /// the app calls this at boot, when nothing legitimately owns an activity.
+   @objc func stopAll(_ call: CAPPluginCall) {
+       let activities = Activity<TimerAttributes>.activities
+       Task {
+           for activity in activities {
+               await activity.end(dismissalPolicy: .immediate)
            }
        }
        call.resolve()

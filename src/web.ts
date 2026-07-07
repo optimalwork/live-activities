@@ -31,4 +31,8 @@ export class LiveActivityWeb extends WebPlugin implements LiveActivityPlugin {
     console.log('ECHO', options);
     return;
   }
+
+  async stopAll(): Promise<void> {
+    return;
+  }
 }

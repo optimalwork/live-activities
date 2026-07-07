@@ -8,4 +8,5 @@ CAP_PLUGIN(LiveActivityPlugin, "LiveActivity",
            CAP_PLUGIN_METHOD(start, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(update, CAPPluginReturnNone);
            CAP_PLUGIN_METHOD(stop, CAPPluginReturnNone);
+           CAP_PLUGIN_METHOD(stopAll, CAPPluginReturnPromise);
 )

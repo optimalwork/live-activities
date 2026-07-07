@@ -16,5 +16,8 @@ export class LiveActivityWeb extends WebPlugin {
         console.log('ECHO', options);
         return;
     }
+    async stopAll() {
+        return;
+    }
 }
 //# sourceMappingURL=web.js.map

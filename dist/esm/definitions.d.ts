@@ -26,4 +26,11 @@ export interface LiveActivityPlugin {
     stop(options: {
         activityId: string;
     }): Promise<void>;
+    /**
+     * End EVERY activity this app owns, immediately. Cold-start orphan
+     * recovery: a Live Activity outlives the webview, so a killed/reloaded
+     * session can leave one running with no JS owner (and no reachable id) —
+     * call this at app boot, when nothing legitimately owns an activity yet.
+     */
+    stopAll(): Promise<void>;
 }

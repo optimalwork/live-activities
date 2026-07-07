@@ -15,7 +15,11 @@ import ActivityKit
             let date = Date.now...future
             let initialContentState = TimerAttributes.ContentState(emoji: emoji, expectedArrivalSeconds: date)
             let activityAttributes = TimerAttributes(name: name, timerType: timerType)
-            let activityContent = ActivityContent(state: initialContentState, staleDate: Calendar.current.date(byAdding: .minute, value: 30, to: Date())!, relevanceScore: 100)
+            // Stale exactly when the timer ends: the app may never get to run
+            // again (suspended/killed at zero), and staleDate is the only
+            // app-free re-render the system gives us — the widget switches to
+            // its "Time's up" state instead of sitting on a live-looking 0:00.
+            let activityContent = ActivityContent(state: initialContentState, staleDate: future, relevanceScore: 100)
             
             do {
                 let activity = try Activity.request(attributes: activityAttributes, content: activityContent)

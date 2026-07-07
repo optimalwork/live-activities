@@ -23,6 +23,9 @@ class LiveActivityWeb extends core.WebPlugin {
         console.log('ECHO', options);
         return;
     }
+    async stopAll() {
+        return;
+    }
 }
 
 var web = /*#__PURE__*/Object.freeze({
