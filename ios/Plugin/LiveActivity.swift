@@ -8,6 +8,56 @@ import ActivityKit
         return value
     }
     
+    /// Native-to-native pause/resume for the running activity — for callers
+    /// that can't go through the webview (e.g. the host app's
+    /// WatchConnectivity handler: a watch-initiated pause arrives while the
+    /// phone is locked, which is exactly when the lock screen is showing the
+    /// Live Activity and the webview JS is suspended). Everything is derived
+    /// from the activity's own current content, so no fresh timer params are
+    /// needed:
+    /// - pause, duration mode: freeze at `deadline − now`, no stale date
+    ///   (a frozen display stays accurate indefinitely);
+    /// - pause, fixed-end mode: keep the countdown counting (the end time is
+    ///   a wall-clock stop — pause halts work logging, not the clock), stale
+    ///   at the deadline so "Time's up" still lands at zero;
+    /// - resume, duration mode: new window `now → now + frozen remaining`;
+    /// - resume, fixed-end mode: the untouched window is still correct.
+    /// A webview-side update for the same transition (if the app is awake) is
+    /// an idempotent duplicate. No-op when no activity is running.
+    /// Static: no instance state, and callable cross-module without relying
+    /// on an inherited initializer's access level.
+    public static func applyPauseState(isPaused: Bool, fixedEnd: Bool) {
+        guard let activity = Activity<TimerAttributes>.activities.first else { return }
+        let state = activity.content.state
+        let now = Date.now
+        var newState = state
+        newState.isPaused = isPaused
+        newState.fixedEnd = fixedEnd
+        let staleDate: Date?
+
+        if isPaused {
+            if fixedEnd {
+                newState.secondsRemainingAtPause = nil
+                staleDate = state.expectedArrivalSeconds.upperBound
+            } else {
+                newState.secondsRemainingAtPause =
+                    max(0, Int(state.expectedArrivalSeconds.upperBound.timeIntervalSince(now)))
+                staleDate = nil
+            }
+        } else {
+            if !fixedEnd {
+                let remaining = newState.secondsRemainingAtPause
+                    ?? max(0, Int(state.expectedArrivalSeconds.upperBound.timeIntervalSince(now)))
+                newState.expectedArrivalSeconds = now...now.addingTimeInterval(TimeInterval(max(0, remaining)))
+            }
+            newState.secondsRemainingAtPause = nil
+            staleDate = newState.expectedArrivalSeconds.upperBound
+        }
+
+        let content = ActivityContent(state: newState, staleDate: staleDate)
+        Task { await activity.update(content) }
+    }
+
     @objc func start(_ emoji: String, _ name: String, _ timerType: String, _ expectedTimeInSeconds: Int) -> String {
         if ActivityAuthorizationInfo().areActivitiesEnabled {
             var future = Calendar.current.date(byAdding: .minute, value: (0), to: Date())!

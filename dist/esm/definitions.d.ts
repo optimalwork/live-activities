@@ -16,10 +16,17 @@ export interface LiveActivityPlugin {
         activityId: string;
         emoji: string;
         expectedTimeInSeconds: number;
-        /** When true, the widget renders a static "Paused" state instead of a counting-down timer. */
+        /** When true, the widget renders a "Paused" state — static unless `fixedEnd` is also true. */
         isPaused?: boolean;
-        /** Frozen remaining seconds to display when `isPaused` is true. */
+        /** Frozen remaining seconds to display when `isPaused` is true (ignored when `fixedEnd`). */
         secondsRemainingAtPause?: number;
+        /**
+         * Fixed-end-time session: the deadline is a wall-clock stop, so a paused
+         * timer KEEPS counting down (pause stops the app's work logging, not the
+         * clock). The widget shows the "Paused" caption over a live countdown,
+         * and still flips to "Time's up" at zero.
+         */
+        fixedEnd?: boolean;
         /** Whether to fire a system alert (banner/sound) on this update. Defaults to false. */
         notify?: boolean;
     }): Promise<void>;

@@ -34,6 +34,7 @@ public class LiveActivityPlugin: CAPPlugin {
        let expectedTimeInSeconds = call.getInt("expectedTimeInSeconds") ?? 0
        let isPaused = call.getBool("isPaused") ?? false
        let secondsRemainingAtPause = call.getInt("secondsRemainingAtPause") ?? 0
+       let fixedEnd = call.getBool("fixedEnd") ?? false
        let notify = call.getBool("notify") ?? false
        let activity = Activity<TimerAttributes>.activities.first { $0.id == activityId}
 
@@ -44,12 +45,15 @@ public class LiveActivityPlugin: CAPPlugin {
                emoji: emoji,
                expectedArrivalSeconds: date,
                isPaused: isPaused,
-               secondsRemainingAtPause: secondsRemainingAtPause
+               secondsRemainingAtPause: secondsRemainingAtPause,
+               fixedEnd: fixedEnd
            )
            // Running: stale exactly at zero (see start()) so the widget can
            // flip to "Time's up" without the app running. Paused: no stale
-           // marker — a frozen display stays accurate indefinitely.
-           let updatedContent = ActivityContent(state: updateState, staleDate: isPaused ? nil : future)
+           // marker — a frozen display stays accurate indefinitely — EXCEPT in
+           // fixed-end mode, where the countdown keeps counting through the
+           // pause and must still flip to "Time's up" at zero.
+           let updatedContent = ActivityContent(state: updateState, staleDate: isPaused && !fixedEnd ? nil : future)
 
            Task {
                if notify {

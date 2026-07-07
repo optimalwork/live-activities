@@ -18,6 +18,10 @@ struct TimerAttributes: ActivityAttributes {
         // Optional so older activities (started before pause-support) still decode.
         var isPaused: Bool?
         var secondsRemainingAtPause: Int?
+        // Fixed-end-time session: a wall-clock stop — a paused timer KEEPS
+        // counting down (pause halts work logging, not the clock). Optional so
+        // older activities still decode.
+        var fixedEnd: Bool?
     }
 
     // Fixed non-changing properties about your activity go here!
@@ -59,7 +63,10 @@ struct TimerLiveActivity: Widget {
 
     @ViewBuilder
     private func timerText(state: TimerAttributes.ContentState) -> some View {
-        if state.isPaused == true {
+        // Frozen only for a duration-mode pause. A fixed-end pause keeps the
+        // live countdown — the deadline is a wall-clock stop the pause can't
+        // move, so a frozen number would be a lie.
+        if state.isPaused == true && state.fixedEnd != true {
             Text(formatTime(state.secondsRemainingAtPause ?? 0))
         } else {
             Text(timerInterval: state.expectedArrivalSeconds, countsDown: true)
@@ -84,18 +91,20 @@ struct TimerLiveActivity: Widget {
                 }
                 Spacer()
                 VStack(alignment: .trailing, spacing: 2) {
-                    if context.state.isPaused == true {
-                        Text("Paused")
+                    if context.isStale {
+                        // Stale = the timer's end passed with the app never
+                        // running again to end this activity (staleDate is
+                        // set to the deadline) — say so instead of sitting
+                        // on a live-looking 0:00. Checked BEFORE paused: a
+                        // fixed-end pause counts down to zero too, and at
+                        // zero "Time's up" beats "Paused".
+                        Text("Time's up")
                             .font(.caption)
                             .foregroundStyle(darkGray.opacity(0.6))
                             .frame(minWidth: 70, alignment: .trailing)
                             .multilineTextAlignment(.trailing)
-                    } else if context.isStale {
-                        // Stale = the timer's end passed with the app never
-                        // running again to end this activity (staleDate is
-                        // set to the deadline) — say so instead of sitting
-                        // on a live-looking 0:00.
-                        Text("Time's up")
+                    } else if context.state.isPaused == true {
+                        Text("Paused")
                             .font(.caption)
                             .foregroundStyle(darkGray.opacity(0.6))
                             .frame(minWidth: 70, alignment: .trailing)
@@ -130,14 +139,14 @@ struct TimerLiveActivity: Widget {
                         }
                         Spacer()
                         VStack(alignment: .trailing, spacing: 2) {
-                            if context.state.isPaused == true {
-                                Text("Paused")
+                            if context.isStale {
+                                Text("Time's up")
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                                     .frame(minWidth: 70, alignment: .trailing)
                                     .multilineTextAlignment(.trailing)
-                            } else if context.isStale {
-                                Text("Time's up")
+                            } else if context.state.isPaused == true {
+                                Text("Paused")
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                                     .frame(minWidth: 70, alignment: .trailing)
@@ -152,9 +161,10 @@ struct TimerLiveActivity: Widget {
                     }
                 }
             } compactLeading: {
-                Image(systemName: context.state.isPaused == true
-                    ? "pause.fill"
-                    : (context.isStale ? "checkmark" : "play.fill"))
+                // Stale beats paused: a fixed-end pause counts to zero too.
+                Image(systemName: context.isStale
+                    ? "checkmark"
+                    : (context.state.isPaused == true ? "pause.fill" : "play.fill"))
                     .foregroundColor(lightGold)
                     // Nudge right off the hard left edge of the compact region.
                     .padding(.leading, 4)
@@ -165,13 +175,14 @@ struct TimerLiveActivity: Widget {
                     .foregroundColor(lightGold)
 
             } minimal: {
-                if context.state.isPaused == true {
-                    Image(systemName: "pause.fill")
-                        .foregroundColor(lightGold)
-                } else if context.isStale {
+                if context.isStale {
                     Image(systemName: "checkmark")
                         .foregroundColor(lightGold)
+                } else if context.state.isPaused == true && context.state.fixedEnd != true {
+                    Image(systemName: "pause.fill")
+                        .foregroundColor(lightGold)
                 } else {
+                    // Running — or a fixed-end pause, whose countdown is live.
                     Text(timerInterval: context.state.expectedArrivalSeconds, countsDown: true)
                         .monospacedDigit()
                         .font(.caption2)
