@@ -39,8 +39,16 @@ public class LiveActivityPlugin: CAPPlugin {
        let activity = Activity<TimerAttributes>.activities.first { $0.id == activityId}
 
        if activity != nil {
-           let future = Calendar.current.date(byAdding: .second, value: expectedTimeInSeconds, to: Date())!
-           let date = Date.now...future
+           // Overtime updates arrive with NEGATIVE remaining seconds (the GH
+           // counts past zero; fixed-end pauses keep draining too), which puts
+           // `future` in the past — and a `now...past` range is a fatal error.
+           // Clamp the window to `now`: the range collapses to a point and the
+           // stale date below fires immediately, flipping the widget to its
+           // "Time's up" state.
+           let now = Date.now
+           let end = Calendar.current.date(byAdding: .second, value: expectedTimeInSeconds, to: now)!
+           let future = max(now, end)
+           let date = now...future
            let updateState = TimerAttributes.ContentState(
                emoji: emoji,
                expectedArrivalSeconds: date,

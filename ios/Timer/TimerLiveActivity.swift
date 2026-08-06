@@ -104,7 +104,11 @@ struct TimerLiveActivity: Widget {
                             .frame(minWidth: 70, alignment: .trailing)
                             .multilineTextAlignment(.trailing)
                     } else if context.state.isPaused == true {
-                        Text("Paused")
+                        // Fixed-end mode: the countdown below keeps counting,
+                        // so the caption says what's actually paused — the
+                        // work ledger, not the clock (pairs with the app's
+                        // "Pause work" button).
+                        Text(context.state.fixedEnd == true ? "Work paused" : "Paused")
                             .font(.caption)
                             .foregroundStyle(darkGray.opacity(0.6))
                             .frame(minWidth: 70, alignment: .trailing)
@@ -146,7 +150,7 @@ struct TimerLiveActivity: Widget {
                                     .frame(minWidth: 70, alignment: .trailing)
                                     .multilineTextAlignment(.trailing)
                             } else if context.state.isPaused == true {
-                                Text("Paused")
+                                Text(context.state.fixedEnd == true ? "Work paused" : "Paused")
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                                     .frame(minWidth: 70, alignment: .trailing)

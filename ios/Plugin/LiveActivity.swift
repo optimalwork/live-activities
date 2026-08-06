@@ -60,9 +60,13 @@ import ActivityKit
 
     @objc func start(_ emoji: String, _ name: String, _ timerType: String, _ expectedTimeInSeconds: Int) -> String {
         if ActivityAuthorizationInfo().areActivitiesEnabled {
-            var future = Calendar.current.date(byAdding: .minute, value: (0), to: Date())!
-            future = Calendar.current.date(byAdding: .second, value: (expectedTimeInSeconds), to: future)!
-            let date = Date.now...future
+            // Clamp like update(): a nonpositive remaining time (e.g. starting
+            // straight into overtime) must not produce a `now...past` range —
+            // that's a fatal error.
+            let now = Date.now
+            let end = Calendar.current.date(byAdding: .second, value: (expectedTimeInSeconds), to: now)!
+            let future = max(now, end)
+            let date = now...future
             let initialContentState = TimerAttributes.ContentState(emoji: emoji, expectedArrivalSeconds: date)
             let activityAttributes = TimerAttributes(name: name, timerType: timerType)
             // Stale exactly when the timer ends: the app may never get to run
