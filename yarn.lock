@@ -20,14 +20,14 @@
   integrity sha512-qSs4ifwzKJSV39ucNjsvc6WVHs6b7S03sOh2OcHF9UHfVPqWWALUsNUVzhSBiItjRZoLHx7nIarVjqKVusUZ1Q==
 
 "@capacitor/android@^8.0.0":
-  version "8.4.1"
-  resolved "https://registry.npmjs.org/@capacitor/android/-/android-8.4.1.tgz"
-  integrity sha512-igtDCJ7QQn0P2qHFD9p4KXaa6V1b2PRNt+MxjVwtjTm/BJvqmiazOJq6rPjwFSZnfHm6iFoZk8TfzHd44pyBGw==
+  version "8.5.3"
+  resolved "https://registry.npmjs.org/@capacitor/android/-/android-8.5.3.tgz"
+  integrity sha512-ilH4gSSz3DrketMkzDVAvY9JsWJ//rCQnECLTdcFRO7xXDogwAbUvQAnIAbiqefwV/D1xfjEL4Gw1MJXEcaA9g==
 
-"@capacitor/core@^8.0.0", "@capacitor/core@^8.4.0":
-  version "8.4.1"
-  resolved "https://registry.npmjs.org/@capacitor/core/-/core-8.4.1.tgz"
-  integrity sha512-xqhOGLbTAYeOWK+IDUNSjQJAPapQjRHrIcgk9PYp52or9zFTaaMko31uNi16N6W+CRJ8VrRram6fOYILkBG2Hg==
+"@capacitor/core@^8.0.0", "@capacitor/core@^8.5.0":
+  version "8.5.3"
+  resolved "https://registry.npmjs.org/@capacitor/core/-/core-8.5.3.tgz"
+  integrity sha512-oBE1oGuYE4ZzYYrulC75OuHdSsD6zLUy7d5o1tFwDLG4govGoubY15cxpiI5l0+q87Lm5p0bhbehMdzJg4aFag==
   dependencies:
     tslib "^2.1.0"
 
@@ -42,41 +42,9 @@
     typescript "~4.2.4"
 
 "@capacitor/ios@^8.0.0":
-  version "8.4.1"
-  resolved "https://registry.npmjs.org/@capacitor/ios/-/ios-8.4.1.tgz"
-  integrity sha512-EgcAk7NYheHMTyP3CUrA65qKs4D2UEAKgw44HI6Uk3dTw6KjLQkdLOQWvbeRncHaZ2gklfOojUoc5DlSw2lhYg==
-
-"@chevrotain/cst-dts-gen@11.0.3":
-  version "11.0.3"
-  resolved "https://registry.npmjs.org/@chevrotain/cst-dts-gen/-/cst-dts-gen-11.0.3.tgz"
-  integrity sha512-BvIKpRLeS/8UbfxXxgC33xOumsacaeCKAjAeLyOn7Pcp95HiRbrpl14S+9vaZLolnbssPIUuiUd8IvgkRyt6NQ==
-  dependencies:
-    "@chevrotain/gast" "11.0.3"
-    "@chevrotain/types" "11.0.3"
-    lodash-es "4.17.21"
-
-"@chevrotain/gast@11.0.3":
-  version "11.0.3"
-  resolved "https://registry.npmjs.org/@chevrotain/gast/-/gast-11.0.3.tgz"
-  integrity sha512-+qNfcoNk70PyS/uxmj3li5NiECO+2YKZZQMbmjTqRI3Qchu8Hig/Q9vgkHpI3alNjr7M+a2St5pw5w5F6NL5/Q==
-  dependencies:
-    "@chevrotain/types" "11.0.3"
-    lodash-es "4.17.21"
-
-"@chevrotain/regexp-to-ast@11.0.3":
-  version "11.0.3"
-  resolved "https://registry.npmjs.org/@chevrotain/regexp-to-ast/-/regexp-to-ast-11.0.3.tgz"
-  integrity sha512-1fMHaBZxLFvWI067AVbGJav1eRY7N8DDvYCTwGBiE/ytKBgP8azTdgyrKyWZ9Mfh09eHWb5PgTSO8wi7U824RA==
-
-"@chevrotain/types@11.0.3":
-  version "11.0.3"
-  resolved "https://registry.npmjs.org/@chevrotain/types/-/types-11.0.3.tgz"
-  integrity sha512-gsiM3G8b58kZC2HaWR50gu6Y1440cHiJ+i3JUvcp/35JchYejb2+5MVeJK0iKThYpAa/P2PYFV4hoi44HD+aHQ==
-
-"@chevrotain/utils@11.0.3":
-  version "11.0.3"
-  resolved "https://registry.npmjs.org/@chevrotain/utils/-/utils-11.0.3.tgz"
-  integrity sha512-YslZMgtJUyuMbZ+aKvfF3x1f5liK4mWNxghFRv7jqRR9C3R3fAOGTTKvxXDa2Y1s9zSbcpuO0cAxDYsc9SrXoQ==
+  version "8.5.3"
+  resolved "https://registry.npmjs.org/@capacitor/ios/-/ios-8.5.3.tgz"
+  integrity sha512-HnnV92Jl8+3x0JUloXUMjFcUsQI8wHFVsKwkLn72DfRZXYGZW11tQbmNOWOnRTljaU18FdI1b9ipT09SzzPDNw==
 
 "@eslint-community/eslint-utils@^4.2.0":
   version "4.9.1"
@@ -208,18 +176,6 @@
     untildify "^4.0.0"
     wrap-ansi "^7.0.0"
 
-"@isaacs/balanced-match@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/@isaacs/balanced-match/-/balanced-match-4.0.1.tgz"
-  integrity sha512-yzMTt9lEb8Gv7zRioUilSglI0c0smZ9k5D65677DLWLtWJaXIS3CqcGyUFByYKlnUj6TkjLVs54fBl6+TiGQDQ==
-
-"@isaacs/brace-expansion@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/@isaacs/brace-expansion/-/brace-expansion-5.0.0.tgz"
-  integrity sha512-ZT55BDLV0yv0RBm2czMiZ+SqCGO7AvmOM3G/w2xhVPH+te0aKgFjmBvGlL1dH+ql2tgGO3MVrbb3jCKyvpgnxA==
-  dependencies:
-    "@isaacs/balanced-match" "^4.0.1"
-
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   dependencies:
@@ -235,15 +191,15 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@rollup/rollup-darwin-arm64@4.54.0":
-  version "4.54.0"
-  resolved "https://registry.npmjs.org/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.54.0.tgz"
-  integrity sha512-k43D4qta/+6Fq+nCDhhv9yP2HdeKeP56QrUUTW7E6PhZP1US6NDqpJj4MY0jBHlJivVJD5P8NxrjuobZBJTCRw==
+"@rollup/rollup-darwin-arm64@4.64.3":
+  version "4.64.3"
+  resolved "https://registry.npmjs.org/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.64.3.tgz"
+  integrity sha512-UkzI35Fnz6+MJNATdnjnZ3TpdG/rXab8h7oDOD9R0zDVIFmuuYrvgUj8V8mh+A//+LR4TlEQo4ZW4RhyRtWv3A==
 
-"@types/estree@1.0.8":
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/@types/estree/-/estree-1.0.8.tgz"
-  integrity sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==
+"@types/estree@1.0.9":
+  version "1.0.9"
+  resolved "https://registry.npmjs.org/@types/estree/-/estree-1.0.9.tgz"
+  integrity sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg==
 
 "@types/fs-extra@^8.0.0":
   version "8.1.5"
@@ -349,7 +305,9 @@ acorn-jsx@^5.3.2:
   version "8.15.0"
 
 ajv@^6.12.4:
-  version "6.12.6"
+  version "6.15.0"
+  resolved "https://registry.npmjs.org/ajv/-/ajv-6.15.0.tgz"
+  integrity sha512-fgFx7Hfoq60ytK2c7DhnF8jIvzYgOMxfugjLOSMHjLIPgenqa7S7oaagATUq99mV6IYvN2tRmC0wnTYX6iPbMw==
   dependencies:
     fast-deep-equal "^3.1.1"
     fast-json-stable-stringify "^2.0.0"
@@ -437,11 +395,25 @@ available-typed-arrays@^1.0.5:
 balanced-match@^1.0.0:
   version "1.0.2"
 
+balanced-match@^4.0.2:
+  version "4.0.4"
+  resolved "https://registry.npmjs.org/balanced-match/-/balanced-match-4.0.4.tgz"
+  integrity sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==
+
 brace-expansion@^1.1.7:
-  version "1.1.11"
+  version "1.1.21"
+  resolved "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.21.tgz"
+  integrity sha512-9zeA+KLZNNzglF2TPKRQEDyx6Yby7daAkuy8MiPzpXPsYDWi/DRM8jmwUDxokQjYqBpv5DgPiwD4h4ZZSy1Ujw==
   dependencies:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
+
+brace-expansion@^5.0.8:
+  version "5.0.12"
+  resolved "https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.12.tgz"
+  integrity sha512-YovQ3rzhaLMIrDjNDMkNS01tea93qhEhG5xy8f6+R0l+dw3Ki+5sCoIoI942iuLZTHWogWktgwVDhU09iNEimQ==
+  dependencies:
+    balanced-match "^4.0.2"
 
 braces@^3.0.3:
   version "3.0.3"
@@ -463,25 +435,6 @@ chalk@^4.0.0:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
-
-chevrotain-allstar@0.3.1:
-  version "0.3.1"
-  resolved "https://registry.npmjs.org/chevrotain-allstar/-/chevrotain-allstar-0.3.1.tgz"
-  integrity sha512-b7g+y9A0v4mxCW1qUhf3BSVPg+/NvGErk/dOkrDaHA0nQIQGAtrOjlX//9OQtRlSCy+x9rfB5N8yC71lH1nvMw==
-  dependencies:
-    lodash-es "^4.17.21"
-
-chevrotain@^11.0.0, chevrotain@11.0.3:
-  version "11.0.3"
-  resolved "https://registry.npmjs.org/chevrotain/-/chevrotain-11.0.3.tgz"
-  integrity sha512-ci2iJH6LeIkvP9eJW6gpueU8cnZhv85ELY8w8WiFtNjMHA5ad6pQLaJo9mEly/9qUyCpvqX8/POVUTf18/HFdw==
-  dependencies:
-    "@chevrotain/cst-dts-gen" "11.0.3"
-    "@chevrotain/gast" "11.0.3"
-    "@chevrotain/regexp-to-ast" "11.0.3"
-    "@chevrotain/types" "11.0.3"
-    "@chevrotain/utils" "11.0.3"
-    lodash-es "4.17.21"
 
 color-convert@^2.0.1:
   version "2.0.1"
@@ -510,7 +463,9 @@ cosmiconfig@^9.0.0:
     parse-json "^5.2.0"
 
 cross-spawn@^7.0.2, cross-spawn@^7.0.3:
-  version "7.0.3"
+  version "7.0.6"
+  resolved "https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz"
+  integrity sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==
   dependencies:
     path-key "^3.1.0"
     shebang-command "^2.0.0"
@@ -809,7 +764,9 @@ flat-cache@^3.0.4:
     rimraf "^3.0.2"
 
 flatted@^3.2.9:
-  version "3.2.9"
+  version "3.4.4"
+  resolved "https://registry.npmjs.org/flatted/-/flatted-3.4.4.tgz"
+  integrity sha512-5+ybhBZANEJxaH3X5evAFatUxLfEHSr7n6kYJ+1Qd0mUqr4eu9gIf6GDbWHf8RJijHrjjO8G+la14SlL2SeS1Q==
 
 for-each@^0.3.3:
   version "0.3.3"
@@ -1088,22 +1045,15 @@ isarray@^2.0.5:
 isexe@^2.0.0:
   version "2.0.0"
 
-java-parser@3.0.1:
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/java-parser/-/java-parser-3.0.1.tgz"
-  integrity sha512-sDIR7u9b7O2JViNUxiZRhnRz7URII/eE7g2B+BmGxDeS6Ex3OYAcCyz5oh0H4LQ+hL/BS8OJTz8apMy9xtGmrQ==
-  dependencies:
-    chevrotain "11.0.3"
-    chevrotain-allstar "0.3.1"
-    lodash "4.17.21"
-
 js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
 
 js-yaml@^4.1.0:
-  version "4.1.1"
+  version "4.3.2"
+  resolved "https://registry.npmjs.org/js-yaml/-/js-yaml-4.3.2.tgz"
+  integrity sha512-SFNOvSJ+Dgf/9An904Yx+CgSlIPCkIpao4qo51lpee25TIRejdH3rhR4EZMGoNx3/TP3O+wzWuiTFl4sqbltzA==
   dependencies:
     argparse "^2.0.1"
 
@@ -1156,18 +1106,8 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-lodash-es@^4.17.21, lodash-es@4.17.21:
-  version "4.17.21"
-  resolved "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.21.tgz"
-  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
-
 lodash.merge@^4.6.2:
   version "4.6.2"
-
-lodash@4.17.21:
-  version "4.17.21"
-  resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
-  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 lru-cache@^11.0.0:
   version "11.2.4"
@@ -1184,14 +1124,16 @@ micromatch@^4.0.8:
     picomatch "^2.3.1"
 
 minimatch@^10.1.1:
-  version "10.1.1"
-  resolved "https://registry.npmjs.org/minimatch/-/minimatch-10.1.1.tgz"
-  integrity sha512-enIvLvRAFZYXJzkCYG5RKmPfrFArdLv+R+lbQ53BmIMLIry74bjKzX6iHAm8WYamJkhSSEabrWN5D97XnKObjQ==
+  version "10.2.6"
+  resolved "https://registry.npmjs.org/minimatch/-/minimatch-10.2.6.tgz"
+  integrity sha512-vpLQEs+VLCr1nU0BXS07maYoFwlDAH0gngQuuttxIwutDFEMHq2blX+8vpgxDdK3J1PwjCJiep77OitTZ4Ll1A==
   dependencies:
-    "@isaacs/brace-expansion" "^5.0.0"
+    brace-expansion "^5.0.8"
 
 minimatch@^3.0.5, minimatch@^3.1.1, minimatch@^3.1.2:
-  version "3.1.2"
+  version "3.1.5"
+  resolved "https://registry.npmjs.org/minimatch/-/minimatch-3.1.5.tgz"
+  integrity sha512-VgjWUsnnT6n+NUk6eZq77zeFdpW2LWDzP6zFGrCbHXiYNul5Dzqk2HHQ5uFH2DNW5Xbp8+jVzaeNt94ssEEl4w==
   dependencies:
     brace-expansion "^1.1.7"
 
@@ -1326,17 +1268,19 @@ picocolors@^1.1.1:
   integrity sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==
 
 picomatch@^2.3.1:
-  version "2.3.1"
+  version "2.3.2"
+  resolved "https://registry.npmjs.org/picomatch/-/picomatch-2.3.2.tgz"
+  integrity sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==
 
 prelude-ls@^1.2.1:
   version "1.2.1"
 
 prettier-plugin-java@^2.6.6:
-  version "2.7.7"
-  resolved "https://registry.npmjs.org/prettier-plugin-java/-/prettier-plugin-java-2.7.7.tgz"
-  integrity sha512-K3N2lrdKzx2FAi67E0UOTLKybX6iitAxYGuiv/emY8v6TzzGzoaKjmhaAyDKIH5iakFqdN+xUwWoauXnE2JZPA==
+  version "2.11.0"
+  resolved "https://registry.npmjs.org/prettier-plugin-java/-/prettier-plugin-java-2.11.0.tgz"
+  integrity sha512-pLwm2wHvVvW5eVVLf1cq2orY2ATaIj5ngN8hJ5ZdXYzUHzxrfaZkk2xmu8Mz/duBXAc2xT/cUH5+dK414HQSTw==
   dependencies:
-    java-parser "3.0.1"
+    web-tree-sitter "0.27.0"
 
 "prettier@^2.4.0 || ^3.0.0", prettier@^3.0.0, prettier@^3.4.2:
   version "3.7.4"
@@ -1385,34 +1329,38 @@ rimraf@^6.0.1:
     package-json-from-dist "^1.0.1"
 
 rollup@^4.30.1:
-  version "4.54.0"
-  resolved "https://registry.npmjs.org/rollup/-/rollup-4.54.0.tgz"
-  integrity sha512-3nk8Y3a9Ea8szgKhinMlGMhGMw89mqule3KWczxhIzqudyHdCIOHw8WJlj/r329fACjKLEh13ZSk7oE22kyeIw==
+  version "4.64.3"
+  resolved "https://registry.npmjs.org/rollup/-/rollup-4.64.3.tgz"
+  integrity sha512-iIMWbptLYsZdGTJMH8ngApXdsCatE6bCMv2eqGIfGE1++kwh7TCWBdWKK0FKC0yx++196vGK5VdagzRXSLMa8A==
   dependencies:
-    "@types/estree" "1.0.8"
+    "@types/estree" "1.0.9"
   optionalDependencies:
-    "@rollup/rollup-android-arm-eabi" "4.54.0"
-    "@rollup/rollup-android-arm64" "4.54.0"
-    "@rollup/rollup-darwin-arm64" "4.54.0"
-    "@rollup/rollup-darwin-x64" "4.54.0"
-    "@rollup/rollup-freebsd-arm64" "4.54.0"
-    "@rollup/rollup-freebsd-x64" "4.54.0"
-    "@rollup/rollup-linux-arm-gnueabihf" "4.54.0"
-    "@rollup/rollup-linux-arm-musleabihf" "4.54.0"
-    "@rollup/rollup-linux-arm64-gnu" "4.54.0"
-    "@rollup/rollup-linux-arm64-musl" "4.54.0"
-    "@rollup/rollup-linux-loong64-gnu" "4.54.0"
-    "@rollup/rollup-linux-ppc64-gnu" "4.54.0"
-    "@rollup/rollup-linux-riscv64-gnu" "4.54.0"
-    "@rollup/rollup-linux-riscv64-musl" "4.54.0"
-    "@rollup/rollup-linux-s390x-gnu" "4.54.0"
-    "@rollup/rollup-linux-x64-gnu" "4.54.0"
-    "@rollup/rollup-linux-x64-musl" "4.54.0"
-    "@rollup/rollup-openharmony-arm64" "4.54.0"
-    "@rollup/rollup-win32-arm64-msvc" "4.54.0"
-    "@rollup/rollup-win32-ia32-msvc" "4.54.0"
-    "@rollup/rollup-win32-x64-gnu" "4.54.0"
-    "@rollup/rollup-win32-x64-msvc" "4.54.0"
+    "@napi-rs/lzma-linux-x64-gnu" "1.5.1"
+    "@rollup/rollup-android-arm-eabi" "4.64.3"
+    "@rollup/rollup-android-arm64" "4.64.3"
+    "@rollup/rollup-darwin-arm64" "4.64.3"
+    "@rollup/rollup-darwin-x64" "4.64.3"
+    "@rollup/rollup-freebsd-arm64" "4.64.3"
+    "@rollup/rollup-freebsd-x64" "4.64.3"
+    "@rollup/rollup-linux-arm-gnueabihf" "4.64.3"
+    "@rollup/rollup-linux-arm-musleabihf" "4.64.3"
+    "@rollup/rollup-linux-arm64-gnu" "4.64.3"
+    "@rollup/rollup-linux-arm64-musl" "4.64.3"
+    "@rollup/rollup-linux-loong64-gnu" "4.64.3"
+    "@rollup/rollup-linux-loong64-musl" "4.64.3"
+    "@rollup/rollup-linux-ppc64-gnu" "4.64.3"
+    "@rollup/rollup-linux-ppc64-musl" "4.64.3"
+    "@rollup/rollup-linux-riscv64-gnu" "4.64.3"
+    "@rollup/rollup-linux-riscv64-musl" "4.64.3"
+    "@rollup/rollup-linux-s390x-gnu" "4.64.3"
+    "@rollup/rollup-linux-x64-gnu" "4.64.3"
+    "@rollup/rollup-linux-x64-musl" "4.64.3"
+    "@rollup/rollup-openbsd-x64" "4.64.3"
+    "@rollup/rollup-openharmony-arm64" "4.64.3"
+    "@rollup/rollup-win32-arm64-msvc" "4.64.3"
+    "@rollup/rollup-win32-ia32-msvc" "4.64.3"
+    "@rollup/rollup-win32-x64-gnu" "4.64.3"
+    "@rollup/rollup-win32-x64-msvc" "4.64.3"
     fsevents "~2.3.2"
 
 run-parallel@^1.1.9:
@@ -1652,6 +1600,11 @@ uri-js@^4.2.2:
   version "4.4.1"
   dependencies:
     punycode "^2.1.0"
+
+web-tree-sitter@0.27.0:
+  version "0.27.0"
+  resolved "https://registry.npmjs.org/web-tree-sitter/-/web-tree-sitter-0.27.0.tgz"
+  integrity sha512-XK08gj6RwTMQatAG7uVRP8MunqotL/XC19vHgkSPKmELgbGPBj4ECvB8haHOUnyj6ls2B8t42UTro14zxGgAHg==
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"
